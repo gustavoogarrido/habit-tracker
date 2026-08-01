@@ -1,5 +1,7 @@
 <x-layout>
-    <div class="text-3x1 font-bold underline">
-        teste
-    </div>
+    @auth
+        <div class="text-3x1 font-bold underline">
+            <p>Você está logado</p>
+        </div>
+    @endauth
 </x-layout>
