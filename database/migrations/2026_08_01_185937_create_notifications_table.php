@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->foreignId('task_id');
-            $table->time('notificate_at');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('task_id')->constrained()->cascadeOnDelete();
 
-            $table->softDeletes();
+            $table->time('notificate_at');
         });
     }
 

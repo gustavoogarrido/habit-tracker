@@ -15,15 +15,20 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
+            // foreign keys
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('habit_id')->nullable()->constrained()->cascadeOnDelete();
+
+            // basic fields
             $table->string('name');
             $table->string('description')->nullable();
 
-            $table->foreignId('habit_id')->nullable();
+            // true cria o registro na tabela notifications
+            $table->boolean('notificate')->default(true);
 
-            $table->boolean('notificate')->default(true); // true cria o registro na tabela notifications
-
+            // record fields
             $table->boolean('done')->default(false);
-            $table->timestamp('done_at');
+            $table->timestamp('done_at')->nullable();
 
             $table->softDeletes();
         });

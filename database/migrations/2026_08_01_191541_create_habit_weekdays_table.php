@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
-            $table->foreignId('task_id');
+            $table->foreignId('habit_id')->constrained()->cascadeOnDelete();
             $table->enum('weekday', [
                 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'
             ]);
 
-            $table->softDeletes();
+            $table->unique(['habit_id','weekday']);
         });
     }
 

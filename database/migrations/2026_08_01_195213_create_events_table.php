@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
 
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->morphs('entity');
 
             $table->enum('event_type', [
@@ -28,8 +29,8 @@ return new class extends Migration
                 'deleted',
             ])->index();
 
-            $table->json('old_value');
-            $table->json('new_value');
+            $table->json('old_value')->nullable();
+            $table->json('new_value')->nullable();
         });
     }
 
