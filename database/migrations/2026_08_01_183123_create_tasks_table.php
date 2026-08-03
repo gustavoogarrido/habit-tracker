@@ -27,7 +27,6 @@ return new class extends Migration
             $table->boolean('notificate')->default(true);
 
             // record fields
-            $table->boolean('done')->default(false);
             $table->timestamp('done_at')->nullable();
 
             $table->softDeletes();

@@ -15,7 +15,6 @@ class Task extends Model
         'name',
         'description',
         'notificate',
-        'done',
         'done_at',
     ];
 
@@ -23,7 +22,6 @@ class Task extends Model
     {
         return [
             'notificate'=> 'boolean',
-            'done'=> 'boolean',
             'done_at'=> 'datetime',
         ];
     }
@@ -46,25 +44,26 @@ class Task extends Model
 
     public function markAsComplete(): void
     {
-        if($this->done && $this->done_at != null){
+        if($this->done_at != null){
             return;
         }
 
         $this->update([
-            'done' => true,
             'done_at'=> now(),
         ]);
     }
 
     public function markAsIncomplete(): void
     {
-        if(!($this->done && $this->done_at != null)){
+        if($this->done_at === null){
             return;
         }
 
         $this->update([
-            'done'=> false,
             'done_at'=> null,
         ]);
     }
+
+    //inserir os scopes
 }
+

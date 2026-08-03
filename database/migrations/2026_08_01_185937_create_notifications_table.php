@@ -18,7 +18,10 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('task_id')->constrained()->cascadeOnDelete();
 
-            $table->time('notificate_at');
+            $table->timestamp('notificate_at');
+            $table->timestamp('sent_at')->nullable();
+
+            $table->timestamp('read_at')->nullable();
         });
     }
 
