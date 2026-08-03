@@ -19,15 +19,7 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('description')->nullable();
-            $table->enum('frequency', [
-                'daily',
-                'weekly',
-                'monthly',
-                'bimonthly',
-                'quarterly',
-                'biannual',
-                'annual',
-            ])->index();
+            $table->string('frequency');
 
             $table->timestamp('starts_at');
             $table->timestamp('ends_at');
